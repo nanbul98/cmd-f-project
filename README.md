@@ -9,7 +9,7 @@ The app has two features: a reward points system, and an image content detector.
 The image content detector determines if an object in an image is recyclable or not.
 
 # How we built it
-We built the app using Android Studio and a Arduino 101 board.
+We built the app using Android Studio, Arduino 101 board, Google Cloud Vision API, and Bluetooth.
 
 # Challenges we ran into
 Connecting the Android phone with the Arduino 101 board via bluetooth, and understanding how data gets transferred over bluetooth
