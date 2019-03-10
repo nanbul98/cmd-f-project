@@ -28,14 +28,4 @@ Connecting the Android phone with the Arduino 101 board via bluetooth, and under
 # What’s next for Disposal Organic Revolutionary Innovative System
 We would like to bring greater incentive by having company sponsors and expand with having separate Arduino setups for different bins. (e.g. garbage, compost) and tracking the activity between them.
 
-![main-screen](https://user-images.githubusercontent.com/45868050/54090430-53ce5380-4331-11e9-8666-a87e56b0898f.png)
-
-![info](https://user-images.githubusercontent.com/45868050/54090429-53ce5380-4331-11e9-9072-0eee493449dd.png)
-
-![camera-screen](https://user-images.githubusercontent.com/45868050/54090428-53ce5380-4331-11e9-82ac-a7b2adbb5987.png)
-
-![infolastpage](https://user-images.githubusercontent.com/45868050/54090425-5335bd00-4331-11e9-998f-b05ffd4d9136.png)
-
-![doris02](https://user-images.githubusercontent.com/45868050/54090427-5335bd00-4331-11e9-95d0-81305c5730d0.jpg)
-
-![doris01](https://user-images.githubusercontent.com/45868050/54090426-5335bd00-4331-11e9-82d0-85803af164f9.jpg)
+https://devpost.com/software/disposal-organic-revolutionary-innovative-system
