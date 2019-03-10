@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     android:background="#6EC44F"
     tools:context=".ImageCapture">
 
@@ -24,9 +25,11 @@
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="294dp" />
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_height="wrap_content"
+
         android:layout_width="match_parent"
         android:scaleType="fitCenter"
         android:layout_marginTop="40dp"/>
@@ -43,13 +46,16 @@
         android:gravity="center"
         android:layout_height="wrap_content"/>
 
+
     <Button
         android:id="@+id/take_image_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+
         android:fontFamily="@font/raleway_medium"
         android:text="@string/is_it_recyclable"
         android:textSize="22sp"
+
         android:visibility="visible"/>
 
 </android.support.v7.widget.LinearLayoutCompat>

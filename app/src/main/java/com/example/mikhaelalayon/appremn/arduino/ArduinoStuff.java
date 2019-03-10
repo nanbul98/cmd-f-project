@@ -10,6 +10,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -92,6 +93,7 @@ public class ArduinoStuff {
     private void onServiceConnected() {
         Log.i(TAG, "Service connected.");
         handler.postDelayed(new Runnable() {
+
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
             @Override
             public void run() {
@@ -122,7 +124,9 @@ public class ArduinoStuff {
 
     private ServiceConnection getService(final String address) {
         Log.i(TAG, "Getting service address: " + address);
+
         return new ServiceConnection() {
+
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder service) {
                 Log.i(TAG, "Connected");
@@ -144,6 +148,7 @@ public class ArduinoStuff {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+
     private BluetoothDevice getSketch() {
         Log.i(TAG, "getting sketch");
         final BluetoothManager bluetoothManager =

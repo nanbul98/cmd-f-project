@@ -20,11 +20,23 @@ public class SampleGattAttributes {
         // Sample Characteristics.
         attributes.put(DISTANCE_CHARACTERISTIC, "Distance From Device");
 //            attributes.put("00002a29-0000-1000-8000-00805f9b34fb", "Manufacturer Name String");
-    }
-    public static String lookup(String uuid, String defaultName) {
-        String name = attributes.get(uuid);
-        return name == null ? defaultName : name;
-    }
+
+        }
+        public static String lookup(String uuid, String defaultName) {
+            String name = attributes.get(uuid);
+            return name == null ? defaultName : name;
+        }
+
+        public static IntentFilter makeGattUpdateIntentFilter() {
+            final IntentFilter intentFilter = new IntentFilter();
+            intentFilter.addAction(BluetoothLeService.ACTION_GATT_CONNECTED);
+            intentFilter.addAction(BluetoothLeService.ACTION_GATT_DISCONNECTED);
+            intentFilter.addAction(BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED);
+            intentFilter.addAction(BluetoothLeService.ACTION_DATA_AVAILABLE);
+            return intentFilter;
+        }
+}
+
 
     public static IntentFilter makeGattUpdateIntentFilter() {
         final IntentFilter intentFilter = new IntentFilter();

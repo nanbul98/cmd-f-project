@@ -17,13 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".DemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <service android:name=".arduino.BluetoothLeService">
 
@@ -35,8 +36,13 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
 
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />

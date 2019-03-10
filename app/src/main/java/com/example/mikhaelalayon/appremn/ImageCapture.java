@@ -190,4 +190,6 @@ public class ImageCapture extends AppCompatActivity {
 
         return message;
     }
+
 }
+
