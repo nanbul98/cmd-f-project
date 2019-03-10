@@ -29,7 +29,6 @@
         <service android:name=".arduino.BluetoothLeService">
 
         </service>
-
         <activity android:name=".ImageCapture">
         </activity>
 
@@ -44,6 +43,9 @@
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
 
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
 
 </manifest>

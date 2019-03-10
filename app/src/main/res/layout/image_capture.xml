@@ -4,30 +4,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
+    android:background="#6EC44F"
     tools:context=".ImageCapture">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginTop="28dp" />
+    <ImageButton
+        android:id="@+id/take_image"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/backgroundColor"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:src="@drawable/camera"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="294dp" />
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_height="wrap_content"
 
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:id="@+id/text_view"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="26sp"
+        android:visibility="gone"
+        android:fontFamily="@font/raleway_medium"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+
 
     <Button
         android:id="@+id/take_image_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/take_image"
-        android:textSize="18sp"
+
+        android:fontFamily="@font/raleway_medium"
+        android:text="@string/is_it_recyclable"
+        android:textSize="22sp"
+
         android:visibility="visible"/>
 
 </android.support.v7.widget.LinearLayoutCompat>
