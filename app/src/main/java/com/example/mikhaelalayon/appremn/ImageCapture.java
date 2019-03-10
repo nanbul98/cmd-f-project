@@ -155,25 +155,46 @@ public class ImageCapture extends AppCompatActivity {
 
         List<EntityAnnotation> entityAnnotations;
 
-        String message = "";
+//        String message = "";
 
         entityAnnotations = imageResponses.getLabelAnnotations();
-        message = formatAnnotation(entityAnnotations);
+//        message = filterForRecyclables(entityAnnotations);
+//        message = formatAnnotation(entityAnnotations);
 
-        return message;
+        return filterForRecyclables(entityAnnotations);
     }
 
-    private String formatAnnotation(List<EntityAnnotation> entityAnnotation) {
-        String message = "";
+    private String filterForRecyclables(List<EntityAnnotation> entityAnnotations) {
+        String message = "Not recyclable!";
 
-        if (entityAnnotation != null) {
-            for (EntityAnnotation entity : entityAnnotation) {
-                message = message + "    " + entity.getDescription() + " " + entity.getScore();
-                message += "\n";
+        for (EntityAnnotation e : entityAnnotations){
+            if (e.getDescription().contains("plastic") ||
+                    e.getDescription().contains("metal") ||
+                    e.getDescription().contains("glass") ||
+                    e.getDescription().contains("carton") ||
+                    e.getDescription().contains("paper")) {
+                message = "Recyclable!";
+                break;
             }
-        } else {
-            message = "Nothing Found";
         }
+
         return message;
     }
+
+
+
+
+//    private String formatAnnotation(List<EntityAnnotation> entityAnnotation) {
+//        String message = "";
+//
+//        if (entityAnnotation != null) {
+//            for (EntityAnnotation entity : entityAnnotation) {
+//                message = message + "    " + entity.getDescription() + " " + entity.getScore();
+//                message += "\n";
+//            }
+//        } else {
+//            message = "Nothing Found";
+//        }
+//        return message;
+//    }
 }
