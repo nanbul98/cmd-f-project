@@ -29,3 +29,5 @@ Connecting the Android phone with the Arduino 101 board via bluetooth, and under
 We would like to bring greater incentive by having company sponsors and expand with having separate Arduino setups for different bins. (e.g. garbage, compost) and tracking the activity between them.
 
 https://devpost.com/software/disposal-organic-revolutionary-innovative-system
+
+Developed by Emily Gong, Mikhaela Layon, Nandini Bulusu, Regina Arcilla
