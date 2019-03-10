@@ -1,7 +1,7 @@
-# D.O.R.I.S. IOT Recycling App
+# D.O.R.I.S. IOT Recycling App :recycle:
 
 # Inspiration
-We want to create an app that encourages and educates people to recycle and be mindful of their waste disposal habits.
+DORIS stands for Disposal Organic Revolutionary Innovative System. We want to create an app that encourages and educates people to recycle and be mindful of their waste disposal habits.
 
 <img src="https://github.com/rarcilla/cmd-f-project/blob/master/app/src/main/res/raw/main-screen.png" alt="main-screen" width="200"/>&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/rarcilla/cmd-f-project/blob/master/app/src/main/res/raw/infolastpage.png" alt="infolastpage" width="200"/>
 
@@ -33,4 +33,4 @@ We would like to bring greater incentive by having company sponsors and expand w
 
 https://devpost.com/software/disposal-organic-revolutionary-innovative-system
 
-Developed by Emily Gong, Mikhaela Layon, Nandini Bulusu, Regina Arcilla
+Developed by :heart: Emily Gong, Mikhaela Layon, Nandini Bulusu, Regina Arcilla :heart:
