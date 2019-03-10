@@ -4,17 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#6EC44F"
     tools:context=".ImageCapture">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginTop="28dp" />
+    <ImageButton
+        android:id="@+id/take_image"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:src="@drawable/camera"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="32dp"-->
+        <!--android:layout_marginTop="28dp" />-->
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_height="wrap_content"
-
         android:layout_width="match_parent"/>
 
     <TextView
@@ -26,7 +44,7 @@
         android:id="@+id/take_image_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/take_image"
+        android:text="Is it recyclable?"
         android:textSize="18sp"
         android:visibility="visible"/>
 
