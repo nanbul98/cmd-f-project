@@ -3,6 +3,9 @@
 # Inspiration
 We want to create an app that encourages and educates people to recycle and be mindful of their waste disposal habits.
 
+<img src="https://github.com/rarcilla/cmd-f-project/blob/master/app/src/main/res/raw/main-screen.png" alt="main-screen" width="200"/>&emsp;&emsp;&emsp;&emsp;<img src="https://github.com/rarcilla/cmd-f-project/blob/master/app/src/main/res/raw/infolastpage.png" alt="infolastpage" width="200"/>
+
+
 # What it does
 The app has two features: a reward points system, and an image content detector. The reward points system gives points to the user whenever they recycle, and takes off points to the user whenever they throw garbage. This is detected by an Arduino 101 board attached to a garbage can lid, which is connected to the app using bluetooth.
 
