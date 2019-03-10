@@ -1,6 +1,7 @@
 package com.example.mikhaelalayon.appremn;
 
-import com.example.mikhaelalayon.appremn.R;
+import com.example.mikhaelalayon.appremn.arduino.BluetoothLeService;
+import com.example.mikhaelalayon.appremn.arduino.SampleGattAttributes;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -222,6 +223,7 @@ public class DeviceControlActivity extends Activity {
     private void displayData(String data) {
         if (data != null) {
             mDataField.setText(data);
+
         }
     }
     // Demonstrates how to iterate through the supported GATT Services/Characteristics.

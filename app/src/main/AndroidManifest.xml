@@ -27,7 +27,7 @@
 
         <activity android:name=".DeviceControlActivity">
         </activity>
-        <service android:name=".BluetoothLeService">
+        <service android:name=".arduino.BluetoothLeService">
 
         </service>
     </application>

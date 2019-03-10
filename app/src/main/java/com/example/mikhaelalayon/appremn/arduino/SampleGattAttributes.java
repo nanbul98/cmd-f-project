@@ -1,4 +1,4 @@
-package com.example.mikhaelalayon.appremn;
+package com.example.mikhaelalayon.appremn.arduino;
 
 import java.util.HashMap;
 
