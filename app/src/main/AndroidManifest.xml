@@ -25,10 +25,24 @@
             </intent-filter>
         </activity>
 
+
         <service android:name=".arduino.BluetoothLeService">
 
         </service>
+
+        <activity android:name=".ImageCapture">
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+
     </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
 
 
