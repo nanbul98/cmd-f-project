@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">REMN</string>
+
     <string name="ble_not_supported">BLE is not supported</string>
     <string name="label_data">Data:</string>
     <string name="label_device_address">Device address:</string>
@@ -16,5 +16,7 @@
     <string name="menu_connect">Connect</string>
     <string name="menu_disconnect">Disconnect</string>
     <string name="menu_scan">Scan</string>
-    <string name="menu_stop">Stop</string>
+    <string name="app_name">DORIS</string>
+    <string name="take_image">Take Image</string>
+    <string name="is_it_recyclable">Is it recyclable?</string>
 </resources>

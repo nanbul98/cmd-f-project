@@ -1,157 +1,82 @@
 package com.example.mikhaelalayon.appremn;
 
-import android.app.Activity;
-import android.app.ListActivity;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.mikhaelalayon.appremn.arduino.ArduinoInterface;
 
-/**
- * Activity for displaying available Bluetooth LE devices.
- */
-public class MainActivity extends ListActivity {
 
-    private LeDeviceListAdapter mLeDeviceListAdapter;
-    private static final int REQUEST_ENABLE_BT = 1;
+public class MainActivity extends AppCompatActivity {
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String TAG = "debug";
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    public static final String GET_POINTS = "get points";
+    private static final int POINT_AMOUNT = 10;
+    public static final String POINT = "pointKey";
+
+    private int points;
+    private TextView displayPoint;
+
+    ImageButton imageButton;
+
+    private ArduinoInterface arduino;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mLeDeviceListAdapter = new LeDeviceListAdapter();
-        setListAdapter(mLeDeviceListAdapter);
 
-        initPairedDevices();
-    }
+        arduino = ArduinoInterface.getInstance();
+        arduino.addListener(new ArduinoInterface.ArduinoListener() {
+            @Override
+            public void onDistanceUpdated(int distance) {
+                incrementPoint();
+            }
+        });
 
-    private void initPairedDevices() {
-        // Initializes a Bluetooth adapter.  For API level 18 and above, get a reference to
-        // BluetoothAdapter through BluetoothManager.
-        final BluetoothManager bluetoothManager =
-                (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-        BluetoothAdapter mBluetoothAdapter = bluetoothManager.getAdapter();
-        // Checks if Bluetooth is supported on the device.
-        if (mBluetoothAdapter == null) {
-            Toast.makeText(this, R.string.error_bluetooth_not_supported, Toast.LENGTH_SHORT).show();
-            finish();
-        }
-        mBluetoothAdapter.enable();
+        sharedPreferences = getSharedPreferences(POINT, Context.MODE_PRIVATE);
+        sharedPreferences.getInt(POINT, 0);
+        displayPoint = findViewById(R.id.textView2);
 
-        Log.i(TAG, "Paired devices: " + String.valueOf(mBluetoothAdapter.getBondedDevices().size()));
+        displayPoint.setText("Points: " + points);
 
-        mLeDeviceListAdapter.clear();
+        imageButton = findViewById(R.id.take_image);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent intent = new Intent(MainActivity.this, ImageCapture.class);
+                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+            }
+        });
 
-        for (BluetoothDevice device : mBluetoothAdapter.getBondedDevices()) {
-            mLeDeviceListAdapter.addDevice(device);
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Ensures Bluetooth is enabled on the device.  If Bluetooth is not currently enabled,
-        // fire an intent to display a dialog asking the user to grant permission to enable it.
-        initPairedDevices();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // User chose not to enable Bluetooth.
-        if (requestCode == REQUEST_ENABLE_BT && resultCode == Activity.RESULT_CANCELED) {
-            finish();
-            return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (mLeDeviceListAdapter != null)
-            mLeDeviceListAdapter.clear();
-    }
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        final BluetoothDevice device = mLeDeviceListAdapter.getDevice(position);
-        if (device == null) return;
-        final Intent intent = new Intent(this, DeviceControlActivity.class);
-        intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, device.getName());
-        intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
-        startActivity(intent);
-    }
-    // Adapter for holding devices found through scanning.
-    private class LeDeviceListAdapter extends BaseAdapter {
-        private ArrayList<BluetoothDevice> mLeDevices;
-        private LayoutInflater mInflater;
-        LeDeviceListAdapter() {
-            super();
-            mLeDevices = new ArrayList<>();
-            mInflater = MainActivity.this.getLayoutInflater();
-        }
-        void addDevice(BluetoothDevice device) {
-            Log.i(TAG, "Adding device");
-            if(!mLeDevices.contains(device)) {
-                mLeDevices.add(device);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            if (data.getIntExtra(GET_POINTS, 0) > 0) {
+                incrementPoint();
             }
-            notifyDataSetChanged();
-        }
-        BluetoothDevice getDevice(int position) {
-            return mLeDevices.get(position);
-        }
-        void clear() {
-            mLeDevices.clear();
-            notifyDataSetChanged();
-        }
-        @Override
-        public int getCount() {
-            return mLeDevices.size();
-        }
-        @Override
-        public Object getItem(int i) {
-            return mLeDevices.get(i);
-        }
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            ViewHolder viewHolder;
-            // General ListView optimization code.
-            if (view == null) {
-                view = mInflater.inflate(R.layout.listitem_device, null);
-                viewHolder = new ViewHolder();
-                viewHolder.deviceAddress = view.findViewById(R.id.device_address);
-                viewHolder.deviceName = view.findViewById(R.id.device_name);
-                view.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) view.getTag();
-            }
-            BluetoothDevice device = mLeDevices.get(i);
-            final String deviceName = device.getName();
-            if (deviceName != null && deviceName.length() > 0)
-                viewHolder.deviceName.setText(deviceName);
-            else
-                viewHolder.deviceName.setText(R.string.unknown_device);
-            viewHolder.deviceAddress.setText(device.getAddress());
-            return view;
         }
     }
-    static class ViewHolder {
-        TextView deviceName;
-        TextView deviceAddress;
+
+    private void incrementPoint() {
+        Log.i(TAG, "called incrementPoint");
+        sharedPreferences.getInt(POINT, 0);
+        points += POINT_AMOUNT;
+        editor = sharedPreferences.edit();
+        editor.putInt(POINT, points);
+        editor.commit();
+        displayPoint.setText("Points: " + points);
     }
+
 }

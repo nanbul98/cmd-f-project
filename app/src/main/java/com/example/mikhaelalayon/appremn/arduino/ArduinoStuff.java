@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ public class ArduinoStuff {
     private Context ctx;
     private ArduinoInterface arduino;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     ArduinoStuff(ArduinoInterface arduino, Context ctx) {
         this.arduino = arduino;
         this.ctx = ctx;
@@ -28,6 +31,7 @@ public class ArduinoStuff {
         //add event handlers stuff
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     private BluetoothClass.Device getSketch() {
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) ctx.getSystemService(Context.BLUETOOTH_SERVICE);
