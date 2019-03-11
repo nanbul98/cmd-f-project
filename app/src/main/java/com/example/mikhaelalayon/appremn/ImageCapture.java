@@ -1,5 +1,6 @@
 package com.example.mikhaelalayon.appremn;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -39,6 +40,8 @@ public class ImageCapture extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String TAG = "debug";
     private static final String CLOUD_VISION_API_KEY = Token.API_KEY;
+
+    private int recyclable = 0;
 
     ImageView imageView;
 
@@ -86,6 +89,16 @@ public class ImageCapture extends AppCompatActivity {
             imageView.setImageBitmap(imageBitmap);
             callCloudVision(imageBitmap, feature);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        if (recyclable == 1) {
+            intent.putExtra(MainActivity.GET_POINTS, 1);
+            setResult(Activity.RESULT_OK, intent);
+        }
+        finish();
     }
 
     private void callCloudVision(final Bitmap bitmap, final Feature feature) {
@@ -180,6 +193,7 @@ public class ImageCapture extends AppCompatActivity {
 //            }
             if (p.matcher(e.getDescription().toLowerCase()).find()) {
                 message = "Recyclable!";
+                recyclable = 1;
             }
             Log.i(TAG,e.getDescription());
         }
