@@ -110,9 +110,10 @@ public class BluetoothLeService extends Service {
             }
             //final int heartRate = characteristic.getIntValue(format, 1);
             byte[] data = characteristic.getValue();
+            int intData = (int) data[0];
 
-            Log.d(TAG, String.format("Received distance: %d", data[0]));
-            intent.putExtra(EXTRA_DATA, String.valueOf(data[0]));
+            Log.d(TAG, String.format("Received distance: %d", intData));
+            intent.putExtra(EXTRA_DATA, intData);
         } else {
             // For all other profiles, writes the data formatted in HEX.
             final byte[] data = characteristic.getValue();
