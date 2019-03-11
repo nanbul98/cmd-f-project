@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="#6EC44F">
+    android:background="@color/backgroundColor">
 
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="32dp"
         android:layout_gravity="center"
-        android:background="@color/transparent"
+        android:background="@color/backgroundColor"
         android:src="@drawable/leaf"
         android:gravity="center"
         />
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="118dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/transparent"
+        android:background="@color/backgroundColor"
         android:gravity="center"
         android:layout_gravity="center"
         android:src="@drawable/camera"

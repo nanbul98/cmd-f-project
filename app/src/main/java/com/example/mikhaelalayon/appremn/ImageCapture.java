@@ -88,6 +88,7 @@ public class ImageCapture extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
             callCloudVision(imageBitmap, feature);
+            findViewById(R.id.take_image).setVisibility(View.INVISIBLE);
         }
     }
 
@@ -169,11 +170,7 @@ public class ImageCapture extends AppCompatActivity {
 
         List<EntityAnnotation> entityAnnotations;
 
-//        String message = "";
-
         entityAnnotations = imageResponses.getLabelAnnotations();
-//        message = filterForRecyclables(entityAnnotations);
-//        message = formatAnnotation(entityAnnotations);
 
         return filterForRecyclables(entityAnnotations);
     }
@@ -183,38 +180,13 @@ public class ImageCapture extends AppCompatActivity {
 
         Pattern p = Pattern.compile("^.*(plastic|metal|glass|carton|paper).*$");
         for (EntityAnnotation e : entityAnnotations){
-//            if (e.getDescription().toLowerCase().contains("plastic") ||
-//                    e.getDescription().toLowerCase().contains("metal") ||
-//                    e.getDescription().toLowerCase().contains("glass") ||
-//                    e.getDescription().toLowerCase().contains("carton") ||
-//                    e.getDescription().toLowerCase().contains("paper")) {
-//                message = "Recyclable!";
-//                break;
-//            }
             if (p.matcher(e.getDescription().toLowerCase()).find()) {
-                message = "Recyclable!";
                 recyclable = 1;
+                message = "Yes! It's recyclable!";
             }
             Log.i(TAG,e.getDescription());
         }
 
         return message;
     }
-
-
-
-
-//    private String formatAnnotation(List<EntityAnnotation> entityAnnotation) {
-//        String message = "";
-//
-//        if (entityAnnotation != null) {
-//            for (EntityAnnotation entity : entityAnnotation) {
-//                message = message + "    " + entity.getDescription() + " " + entity.getScore();
-//                message += "\n";
-//            }
-//        } else {
-//            message = "Nothing Found";
-//        }
-//        return message;
-//    }
 }
