@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.mikhaelalayon.appremn.arduino.ArduinoInterface;
+
 
 public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -26,10 +28,20 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton imageButton;
 
+    private ArduinoInterface arduino;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        arduino = ArduinoInterface.getInstance();
+        arduino.addListener(new ArduinoInterface.ArduinoListener() {
+            @Override
+            public void onDistanceUpdated(int distance) {
+                incrementPoint();
+            }
+        });
 
         sharedPreferences = getSharedPreferences(POINT, Context.MODE_PRIVATE);
         sharedPreferences.getInt(POINT, 0);
