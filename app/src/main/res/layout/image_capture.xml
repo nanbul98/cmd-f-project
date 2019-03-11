@@ -27,23 +27,29 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="40dp"/>
 
     <TextView
         android:id="@+id/text_view"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="26sp"
+        android:visibility="gone"
         android:fontFamily="@font/raleway_medium"
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="wrap_content" />
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/take_image_button"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:fontFamily="@font/raleway_medium"
-        android:text="Is it recyclable?"
-        android:textSize="18sp"
+        android:text="@string/is_it_recyclable"
+        android:textSize="22sp"
         android:visibility="visible"/>
 
 </android.support.v7.widget.LinearLayoutCompat>

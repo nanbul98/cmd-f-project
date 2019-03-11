@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">appREMN</string>
+    <string name="app_name">DORIS</string>
     <string name="take_image">Take Image</string>
+    <string name="is_it_recyclable">Is it recyclable?</string>
 </resources>

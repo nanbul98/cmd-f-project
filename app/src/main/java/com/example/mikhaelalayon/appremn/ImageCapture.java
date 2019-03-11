@@ -86,9 +86,10 @@ public class ImageCapture extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(imageBitmap);
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(imageBitmap, 400, 560, false));
             callCloudVision(imageBitmap, feature);
-            findViewById(R.id.take_image).setVisibility(View.INVISIBLE);
+            findViewById(R.id.text_view).setVisibility(View.VISIBLE);
+            findViewById(R.id.take_image).setVisibility(View.GONE);
         }
     }
 
