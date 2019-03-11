@@ -32,12 +32,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ImageCapture extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String TAG = "debug";
-    private static final String CLOUD_VISION_API_KEY = "AIzaSyCGDDBHUC7EdK8CjpaPmuwgMfIfeywYqlg";
+    private static final String CLOUD_VISION_API_KEY = Token.API_KEY;
 
     ImageView imageView;
 
@@ -167,15 +168,20 @@ public class ImageCapture extends AppCompatActivity {
     private String filterForRecyclables(List<EntityAnnotation> entityAnnotations) {
         String message = "Not recyclable!";
 
+        Pattern p = Pattern.compile("^.*(plastic|metal|glass|carton|paper).*$");
         for (EntityAnnotation e : entityAnnotations){
-            if (e.getDescription().contains("plastic") ||
-                    e.getDescription().contains("metal") ||
-                    e.getDescription().contains("glass") ||
-                    e.getDescription().contains("carton") ||
-                    e.getDescription().contains("paper")) {
+//            if (e.getDescription().toLowerCase().contains("plastic") ||
+//                    e.getDescription().toLowerCase().contains("metal") ||
+//                    e.getDescription().toLowerCase().contains("glass") ||
+//                    e.getDescription().toLowerCase().contains("carton") ||
+//                    e.getDescription().toLowerCase().contains("paper")) {
+//                message = "Recyclable!";
+//                break;
+//            }
+            if (p.matcher(e.getDescription().toLowerCase()).find()) {
                 message = "Recyclable!";
-                break;
             }
+            Log.i(TAG,e.getDescription());
         }
 
         return message;
