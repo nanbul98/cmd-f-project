@@ -41,6 +41,7 @@
         android:id="@+id/take_image"
         android:layout_width="wrap_content"
         android:layout_height="118dp"
+        android:layout_marginBottom="32dp"
         android:background="@color/transparent"
         android:gravity="center"
         android:layout_gravity="center"
